@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7832616197532343357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5414907532977888435}
+  - component: {fileID: 5668700903775759276}
+  m_Layer: 0
+  m_Name: CharacterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5414907532977888435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832616197532343357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5668700903775759276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832616197532343357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545d46f15d55bf04a88017bc4a6265bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameramove: {fileID: 0}
+  playerPrefs:
+  - {fileID: 3885507672128704563, guid: a7e646642f5f4174593e1918327851e2, type: 3}
+  - {fileID: 4528570515442750734, guid: 1e93bc7363418034286975955f89dc51, type: 3}
+  - {fileID: 2007684258810781605, guid: 9090ad0110a32fd42a6255016e4eef23, type: 3}
+  tagNumber: 0
+  PlayerStartPos: {x: -6, y: -1, z: 0}
+  playerScript: {fileID: 0}
+  players: []
+  player: {fileID: 0}
+  playerScore: 0
+  catFoodCount: 0
+  catFoodsCount: 0
+  canFoodCount: 0
+  catLeafCount: 0
+  playerSpeed: 8
+  jumpPower: 0
+  gravityScale: 0
+  speedMultiplier: 1
+  catFoodScore: 100
+  catFoodsScore: 200
+  canFoodScore: 300
+  destroyScore: 300
+  udadaTime: 2
+  udadaSpeedMultiplier: 1.8
+  megamewTime: 2
+  megamewMultiplier: 2
+  catleafTime: 2
+  initialJumpPower: 2.8
+  initialGravityScale: 9
+  idlePlayerSpeed: 6.5
+  initialSpeedMultiplier: 1
+  immuneTime: 1.8
+  playerHealth: 7
+  maxHealthCount: 7
+  catLeafCanvasPrefab: {fileID: 851140081378614077, guid: 93c497f63e9c82c40acb27721736e5b7,
+    type: 3}
+  cantTouchTag: 0
+  isHitted: 0
+  tagSound: {fileID: 8300000, guid: 9d693d5d3d38a1740afad3eb4d5d58d9, type: 3}
+  bonusStageSound: {fileID: 8300000, guid: 450fe8661ee586b4c81fd0389cc3dc92, type: 3}

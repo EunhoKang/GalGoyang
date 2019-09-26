@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
             GameObject temp = Instantiate(CanvasPrefabs[i]);
             Canvases.Add(temp);
             temp.SetActive(false);
+            yield return null;
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
         ShowCanvas(0);

@@ -26,11 +26,13 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Init();
+        StartCoroutine(Init());
     }
 
-    void Init()
+    IEnumerator Init()
     {
+        SceneManager.LoadScene("Game",LoadSceneMode.Additive);
+        yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("UI"));
         for(int i = 0; i < CanvasPrefabs.Count; i++)
         {

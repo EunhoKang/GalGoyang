@@ -202,6 +202,7 @@ public class CharacterManager : MonoBehaviour
     public void AlphabetOn(int index)
     {
         alphabet(index);
+        alphabetOn[index] = true;
         for(int i = 0; i < alphabetOn.Length; i++)
         {
             if (!alphabetOn[i])

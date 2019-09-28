@@ -117,8 +117,9 @@ public class Player : MonoBehaviour
             }
             if (cur > transform.position.y)
             {
-                rb.AddForce(Vector2.up* CharacterManager.charmanager.speedMultiplier);
+                rb.AddForce(Vector2.up* CharacterManager.charmanager.speedMultiplier*10);
             }
+            cur= transform.position.y;
             yield return null;
         }
         
@@ -132,6 +133,13 @@ public class Player : MonoBehaviour
         CharacterManager.charmanager.speedMultiplier = degree;
 
         rb.gravityScale = CharacterManager.charmanager.gravityScale;
+        MoveVector = new Vector2(CharacterManager.charmanager.playerSpeed, 0);
+        rb.velocity = MoveVector;
+    }
+    public void SpeedChangeUdada(float degree)
+    {
+        CharacterManager.charmanager.playerSpeed = CharacterManager.charmanager.idlePlayerSpeed * degree;
+        CharacterManager.charmanager.speedMultiplier = degree;
         MoveVector = new Vector2(CharacterManager.charmanager.playerSpeed, 0);
         rb.velocity = MoveVector;
     }
@@ -340,7 +348,7 @@ public class Player : MonoBehaviour
     IEnumerator DuringUdada()
     { 
         effector.SetBool("Udada", false);
-        SpeedChange(CharacterManager.charmanager.udadaSpeedMultiplier);
+        SpeedChangeUdada(CharacterManager.charmanager.udadaSpeedMultiplier);
         effector.SetBool("Udada", true);
         for (float i = 0; i < CharacterManager.charmanager.udadaTime; i += 0.05f)
         {
@@ -350,7 +358,7 @@ public class Player : MonoBehaviour
             yield return defaultAnim;
         }
         isUdada = false;
-        SpeedChange(CharacterManager.charmanager.initialSpeedMultiplier);
+        SpeedChangeUdada(CharacterManager.charmanager.initialSpeedMultiplier);
         effector.SetBool("Udada", false);
         CharacterManager.charmanager.isHitted = true;
         CharacterManager.charmanager.cantTouchTag = false;

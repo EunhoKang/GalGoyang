@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 9
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -141,30 +141,24 @@ MonoBehaviour:
   animator: {fileID: 4528570515442750735}
   effector: {fileID: 9210497779969006390}
   MaxJumpCount: 2
+  isUdada: 0
+  isMega: 0
+  isParty: 0
   playerstate: 0
   catFoodScore: 0
   catFoodsScore: 0
   canFoodScore: 0
   destroyScore: 0
-  udadaTime: 0
-  megamewTime: 0
-  catleafTime: 0
-  udadaSpeedMultiplier: 0
-  megamewMultiplier: 0
-  idlePlayerSpeed: 0
-  playerSpeed: 0
-  speedMultiplier: 0
-  initialJumpPower: 2.6
-  initialSpeedMultiplier: 0
-  immuneTime: 1.6
+  playerPrefs: []
+  tagNumber: 0
+  PlayerStartPos: {x: 0, y: 0, z: 0}
+  playerScript: {fileID: 0}
+  players: []
+  player: {fileID: 0}
+  playerScore: 0
   jumpSound: {fileID: 8300000, guid: e2ce0d9579f8ce540b5cc6898276d925, type: 3}
   crashSound: {fileID: 8300000, guid: 2e2beee428b17554b9e3a50b7c7b1645, type: 3}
   breakSound: {fileID: 8300000, guid: bf2fa766f9330334e8d71e86bb66e16b, type: 3}
-  itemSound: {fileID: 8300000, guid: 76e032fe21312644dae2c89699cd01e6, type: 3}
-  MegaMewSound: {fileID: 8300000, guid: dbff182919b16d44293f861b2a93489b, type: 3}
-  UdadaSound: {fileID: 8300000, guid: 94843e6015e80c042b9e1022b6f24b5d, type: 3}
-  CatleafpartySound: {fileID: 8300000, guid: 450fe8661ee586b4c81fd0389cc3dc92, type: 3}
-  HeartSound: {fileID: 8300000, guid: b5ff291b1ef56b24e9f7a4861a1db388, type: 3}
   DeadSound: {fileID: 8300000, guid: 5c30defed27023945bd1ff84394e6e6d, type: 3}
   winSound: {fileID: 8300000, guid: b4b51ab3840959a469bc6158dcbc3433, type: 3}
 --- !u!61 &8803779311222220521

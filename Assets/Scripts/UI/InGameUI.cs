@@ -25,7 +25,7 @@ public class InGameUI : MonoBehaviour
     {
         scoreText.text = "00000000";
         scoreStringBuilder= new StringBuilder("00000000");
-        //ScoreUI(0);
+
         for(int i = 0; i < hearts.Length; i++)
         {
             hearts[i].SetActive(true);

@@ -13,7 +13,8 @@ public class GameOverCanvas : MonoBehaviour
 
     private void OnEnable()
     {
-        PopUp();
+        if(CharacterManager.charmanager!=null)
+            PopUp();
     }
 
     public void PopUp()
@@ -78,7 +79,6 @@ public class GameOverCanvas : MonoBehaviour
     IEnumerator GoBackToMenuCoroutine()
     {
         SoundManager.soundmanager.UIClick();
-        int i = 0;
         SceneManager.UnloadSceneAsync("Game");
         SceneManager.LoadScene("Game", LoadSceneMode.Additive);
         yield return null;

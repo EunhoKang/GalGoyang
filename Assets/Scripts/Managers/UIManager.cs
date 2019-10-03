@@ -29,10 +29,9 @@ public class UIManager : MonoBehaviour
         StartCoroutine(Init());
     }
 
+
     IEnumerator Init()
     {
-        SceneManager.LoadScene("Game",LoadSceneMode.Additive);
-        yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("UI"));
         for(int i = 0; i < CanvasPrefabs.Count; i++)
         {
@@ -41,7 +40,6 @@ public class UIManager : MonoBehaviour
             temp.SetActive(false);
             yield return null;
         }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
         ShowCanvas(0);
     }
 

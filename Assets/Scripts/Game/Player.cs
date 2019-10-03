@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
         {
             if (rb.velocity.x < CharacterManager.charmanager.playerSpeed && playerstate == PlayerState.idle)
             {
+                MoveVector.x = CharacterManager.charmanager.playerSpeed;
                 rb.velocity = MoveVector;
             }
             if (cur > transform.position.y)

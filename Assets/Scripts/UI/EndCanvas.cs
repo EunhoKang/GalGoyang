@@ -15,7 +15,8 @@ public class EndCanvas : MonoBehaviour
 
     private void OnEnable()
     {
-        PopUp();
+        if (CharacterManager.charmanager != null)
+            PopUp();
     }
 
     public void PopUp()
@@ -87,20 +88,6 @@ public class EndCanvas : MonoBehaviour
             }
         }
         catFoodText.text = CharacterManager.charmanager.catFoodCount.ToString();
-    }
-
-    IEnumerator ReloadScene(string SceneName)
-    {
-        int i = 0;
-        SceneManager.UnloadScene(SceneName);
-        SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
-        while (i >= 0)
-        {
-            i++;
-            yield return null;
-        }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
-        yield return null;
     }
 
     IEnumerator RestartCoroutine()

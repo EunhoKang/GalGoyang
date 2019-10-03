@@ -157,24 +157,37 @@ public class CharacterManager : MonoBehaviour
         cantTouchTag = false;
     }
 
-    public void Tag()
+    public void Tag(bool isRight)
     {
-        if (!enabled || playerScript.playerstate!=0 || cantTouchTag)
-        {
-            return;
-        }
+        //if (playerScript.playerstate != 0 || cantTouchTag)
+        //{
+        //    return;
+        //}
         Vector3 tempPos = player.transform.position;
         player.SetActive(false);
-        if (tagNumber >= playerPrefs.Length-1)
+        if (isRight)
         {
-            tagNumber = 0;
-            SoundManager.soundmanager.SFXSet(tagSound, 1);
+            if (tagNumber >= playerPrefs.Length - 1)
+            {
+                tagNumber = 0;
+            }
+            else
+            {
+                tagNumber++;
+            }
         }
         else
         {
-            tagNumber++;
-            SoundManager.soundmanager.SFXSet(tagSound, 1);
+            if (tagNumber <= 0)
+            {
+                tagNumber = 2;
+            }
+            else
+            {
+                tagNumber--;
+            }
         }
+        SoundManager.soundmanager.SFXSet(tagSound, 1);
         player = players[tagNumber];
         player.transform.position = tempPos;
         player.SetActive(true);

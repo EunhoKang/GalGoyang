@@ -71,9 +71,9 @@ MonoBehaviour:
   megamewTime: 2
   megamewMultiplier: 2
   catleafTime: 2
-  initialJumpPower: 2.8
-  initialGravityScale: 9
-  idlePlayerSpeed: 6.5
+  initialJumpPower: 2.2
+  initialGravityScale: 6.25
+  idlePlayerSpeed: 5
   initialSpeedMultiplier: 1
   immuneTime: 1.8
   playerHealth: 7

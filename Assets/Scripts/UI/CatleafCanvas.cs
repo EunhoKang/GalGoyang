@@ -24,8 +24,8 @@ public class CatleafCanvas : MonoBehaviour
         Vector3 leafpos = new Vector3(0, 0, 0);
         for (int i=0; i < leafs.Count; i++)
         {
-            leafpos.x= Random.Range(-750,750);
-            leafpos.y = Random.Range(-350,350);
+            leafpos.x= Random.Range(-560,560);
+            leafpos.y = Random.Range(-240,240);
             leafs[i].transform.localPosition = leafpos;
             leafs[i].SetActive(true);
         }

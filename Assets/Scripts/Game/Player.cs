@@ -113,7 +113,9 @@ public class Player : MonoBehaviour
         {
             if (rb.velocity.x < CharacterManager.charmanager.playerSpeed && playerstate == PlayerState.idle)
             {
+                Debug.Log("Has Stucked");
                 MoveVector.x = CharacterManager.charmanager.playerSpeed;
+                transform.position += forPrevent * CharacterManager.charmanager.playerSpeed * 0.125f;
                 rb.velocity = MoveVector;
             }
             if (cur > transform.position.y)

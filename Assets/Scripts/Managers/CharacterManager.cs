@@ -159,10 +159,6 @@ public class CharacterManager : MonoBehaviour
 
     public void Tag(bool isRight)
     {
-        //if (playerScript.playerstate != 0 || cantTouchTag)
-        //{
-        //    return;
-        //}
         Vector3 tempPos = player.transform.position;
         player.SetActive(false);
         if (isRight)

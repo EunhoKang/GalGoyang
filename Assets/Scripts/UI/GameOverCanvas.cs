@@ -13,7 +13,10 @@ public class GameOverCanvas : MonoBehaviour
 
     private void OnEnable()
     {
-        if(CharacterManager.charmanager!=null)
+        lucy.gameObject.SetActive(false);
+        mum.gameObject.SetActive(false);
+        b3.gameObject.SetActive(false);
+        if (CharacterManager.charmanager!=null)
             PopUp();
     }
 
@@ -53,40 +56,17 @@ public class GameOverCanvas : MonoBehaviour
         }
     }
 
-    IEnumerator RestartCoroutine()
-    {
-        SoundManager.soundmanager.UIClick();
-        SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
-        yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
-        yield return null;
-        CharacterManager.charmanager.Init();
-        MapManager.mapmanager.Init();
-        lucy.gameObject.SetActive(false);
-        mum.gameObject.SetActive(false);
-        b3.gameObject.SetActive(false);
-        UIManager.uimanager.RemoveCanvas(2);
-        UIManager.uimanager.ShowCanvas(2);
-        UIManager.uimanager.RemoveCanvas(4);
-    }
-
     public void Restart()
     {
-        StartCoroutine(RestartCoroutine());
+        SoundManager.soundmanager.UIClick();
+        UIManager.uimanager.GameRestart();
     }
 
     IEnumerator GoBackToMenuCoroutine()
     {
         SoundManager.soundmanager.UIClick();
         SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
         yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
-        yield return null;
-        lucy.gameObject.SetActive(false);
-        mum.gameObject.SetActive(false);
-        b3.gameObject.SetActive(false);
         UIManager.uimanager.RemoveCanvas(2);
         UIManager.uimanager.ShowCanvas(1);
         UIManager.uimanager.RemoveCanvas(4);

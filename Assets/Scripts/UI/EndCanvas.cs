@@ -15,6 +15,11 @@ public class EndCanvas : MonoBehaviour
 
     private void OnEnable()
     {
+        scoreText.text = "000000000000";
+        catFoodText.text = "00";
+        catFoodsText.text = "00";
+        canFoodText.text = "00";
+        catleafText.text = "00";
         if (CharacterManager.charmanager != null)
             PopUp();
     }
@@ -90,44 +95,17 @@ public class EndCanvas : MonoBehaviour
         catFoodText.text = CharacterManager.charmanager.catFoodCount.ToString();
     }
 
-    IEnumerator RestartCoroutine()
-    {
-        SoundManager.soundmanager.UIClick();
-        SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
-        yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
-        yield return null;
-        CharacterManager.charmanager.Init();
-        MapManager.mapmanager.Init();
-        scoreText.text= "000000000000";
-        catFoodText.text="00";
-        catFoodsText.text= "00";
-        canFoodText.text= "00";
-        catleafText.text= "00";
-        UIManager.uimanager.RemoveCanvas(2);
-        UIManager.uimanager.ShowCanvas(2);
-        UIManager.uimanager.RemoveCanvas(3);
-    }
-
     public void Restart()
     {
-        StartCoroutine(RestartCoroutine());
+        SoundManager.soundmanager.UIClick();
+        UIManager.uimanager.GameRestart();
     }
 
     IEnumerator GoBackToMenuCoroutine()
     {
         SoundManager.soundmanager.UIClick();
         SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
         yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
-        yield return null;
-        scoreText.text = "000000000000";
-        catFoodText.text = "00";
-        catFoodsText.text = "00";
-        canFoodText.text = "00";
-        catleafText.text = "00";
         UIManager.uimanager.RemoveCanvas(2);
         UIManager.uimanager.ShowCanvas(1);
         UIManager.uimanager.RemoveCanvas(3);

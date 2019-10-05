@@ -51,4 +51,23 @@ public class UIManager : MonoBehaviour
     {
         Canvases[index].SetActive(true);
     }
+
+    IEnumerator RestartCoroutine()
+    {
+        RemoveCanvas(2);
+        RemoveCanvas(4);
+        SceneManager.UnloadSceneAsync("Game");
+        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+        yield return null;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
+        yield return null;
+        CharacterManager.charmanager.Init();
+        MapManager.mapmanager.Init();
+        ShowCanvas(2);
+    }
+
+    public void GameRestart()
+    {
+        StartCoroutine(RestartCoroutine());
+    }
 }

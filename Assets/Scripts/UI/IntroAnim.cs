@@ -36,7 +36,7 @@ public class IntroAnim : MonoBehaviour
 
     void Change()
     {
-        UIManager.uimanager.RemoveCanvas(0);
-        UIManager.uimanager.ShowCanvas(1);
+        UIManager.uimanager.RemoveCanvas(1);
+        UIManager.uimanager.ShowCanvas(2);
     }
 }

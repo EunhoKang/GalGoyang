@@ -29,18 +29,21 @@ public class UIManager : MonoBehaviour
         StartCoroutine(Init());
     }
 
-
     IEnumerator Init()
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("UI"));
-        for(int i = 0; i < CanvasPrefabs.Count; i++)
+        for (int i = 0; i < CanvasPrefabs.Count; i++)
         {
             GameObject temp = Instantiate(CanvasPrefabs[i]);
             Canvases.Add(temp);
             temp.SetActive(false);
             yield return null;
         }
-        ShowCanvas(0);
+        ShowCanvas(1);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+        yield return null;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
     }
 
     public void RemoveCanvas(int index)
@@ -54,20 +57,34 @@ public class UIManager : MonoBehaviour
 
     IEnumerator RestartCoroutine()
     {
-        RemoveCanvas(2);
-        RemoveCanvas(4);
-        SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
-        yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
-        yield return null;
+        LoadingScreen();
+        RemoveCanvas(3);
+        RemoveCanvas(5);
+        CharacterManager.charmanager.ResetAll();
+        MapManager.mapmanager.ResetAll();
+        yield return new WaitForSeconds(0.5f);
+        //SceneManager.UnloadSceneAsync("Game");
+        //yield return new WaitForSeconds(0.5f);
+        //SceneManager.LoadSceneAsync("Game", LoadSceneMode.Additive);
+        //yield return new WaitForSeconds(1f);
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
+
         CharacterManager.charmanager.Init();
         MapManager.mapmanager.Init();
-        ShowCanvas(2);
+        ShowCanvas(3);
+        EndLoading();
     }
-
     public void GameRestart()
     {
         StartCoroutine(RestartCoroutine());
+    }
+
+    public void LoadingScreen()
+    {
+        ShowCanvas(0);
+    }
+    public void EndLoading()
+    {
+        RemoveCanvas(0);
     }
 }

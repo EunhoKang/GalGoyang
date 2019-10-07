@@ -11,11 +11,13 @@ public class CameraMove : MonoBehaviour
     private Vector3 CameraVector;
     private WaitForEndOfFrame CameraWait=new WaitForEndOfFrame();
     private Camera camera;
+    private Vector3 ResetPos;
 
     private void Awake()
     {
         camera = GetComponent<Camera>();
         camera.orthographicSize = zoomRate;
+        ResetPos = transform.position;
     }
 
     public void CameraStart(){
@@ -23,12 +25,17 @@ public class CameraMove : MonoBehaviour
         {
             return;
         }
-        StartCoroutine("CameraUpdate");
+        StartCoroutine(CameraUpdate());
     }
-    IEnumerator CameraUpdate(){ //코드 개선 필요(이벤트 방식)
+    public void CameraReset()
+    {
+        StopCoroutine(CameraUpdate());
+        transform.position = ResetPos;
+    }
+    IEnumerator CameraUpdate(){
         CameraPlace = CharacterManager.charmanager.player.transform.position;
         CameraVector = new Vector3(CameraPlace.x, cameraInitialPosition.y, cameraInitialPosition.z);
-        while (true){
+        while (CharacterManager.charmanager.player != null){
             CameraVector.x= CharacterManager.charmanager.player.transform.position.x+howFarFromCamera;
             transform.position=CameraVector;
             yield return null;

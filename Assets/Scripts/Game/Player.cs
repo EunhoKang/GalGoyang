@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public enum PlayerState //캐릭터매니저에 공통 정보 위임
+    public enum PlayerState
     {
         idle=0,
         air,
@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     private Vector2 MoveVector;
     private float initialSpeed;
     private int ExtraJumpLeft;
-    //private bool isHitted;
     private Vector3 forPrevent;
     private Vector2 whenDead;
     private IEnumerator curUdada;
@@ -44,10 +43,10 @@ public class Player : MonoBehaviour
     Vector3 targetTransform;
 
     [HideInInspector] public PlayerState playerstate;
-    [HideInInspector] public int catFoodScore;//
-    [HideInInspector] public int catFoodsScore;//
-    [HideInInspector] public int canFoodScore;//
-    [HideInInspector] public int destroyScore;//
+    [HideInInspector] public int catFoodScore;
+    [HideInInspector] public int catFoodsScore;
+    [HideInInspector] public int canFoodScore;
+    [HideInInspector] public int destroyScore;
 
     public GameObject[] playerPrefs;
     public int tagNumber = 0;
@@ -115,7 +114,7 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Has Stucked");
                 MoveVector.x = CharacterManager.charmanager.playerSpeed;
-                transform.position += forPrevent * CharacterManager.charmanager.playerSpeed * 0.125f;
+                transform.position += forPrevent * CharacterManager.charmanager.playerSpeed * 0.075f;
                 rb.velocity = MoveVector;
             }
             if (cur > transform.position.y)
@@ -242,7 +241,14 @@ public class Player : MonoBehaviour
     public void GameClear()
     {
         SoundManager.soundmanager.SFXSet(winSound, 0);
-        StopAllCoroutines();
+        StopCoroutine(PreventStuck());
+        StopCoroutine(NotStepOnRightPlace());
+        StopCoroutine(AfterDead());
+        StopCoroutine(Immune());
+        StopCoroutine(DuringCatleafParty());
+        StopCoroutine(DuringMegaMew());
+        StopCoroutine(DuringUdada());
+
         if (curUdada != null)
             StopCoroutine(curUdada);
         if (curMega != null)
@@ -331,7 +337,7 @@ public class Player : MonoBehaviour
         while (NotOnRightPlace)
         {
             Debug.Log("going up");
-            transform.position += forPrevent* CharacterManager.charmanager.playerSpeed *0.125f;
+            transform.position += forPrevent* CharacterManager.charmanager.playerSpeed *0.075f;
             yield return null;
         }
     }

@@ -40,6 +40,7 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public float jumpPower;
     [HideInInspector] public float gravityScale;
     [HideInInspector] public float speedMultiplier;
+    [HideInInspector] public int playerHealth;
 
     public int catFoodScore;
     public int catFoodsScore;
@@ -52,11 +53,11 @@ public class CharacterManager : MonoBehaviour
     public float catleafTime;
 
     public float initialJumpPower;
-    public float initialGravityScale=9;
+    public float initialGravityScale;
     public float idlePlayerSpeed;
     public float initialSpeedMultiplier;
     public float immuneTime;
-    public int playerHealth;
+    public int initialPlayerHealth;
     public int maxHealthCount;
 
     public CatleafCanvas catLeafCanvasPrefab;
@@ -84,10 +85,21 @@ public class CharacterManager : MonoBehaviour
         players = new GameObject[playerPrefs.Length];
         playerSpeed = idlePlayerSpeed;
         speedMultiplier = initialSpeedMultiplier;
+        playerHealth = initialPlayerHealth;
+        itemCounts =new List<ItemDel>();
         itemCounts.Add(CatFoodCountUp);
         itemCounts.Add(CatFoodsCountUp);
         itemCounts.Add(CanFoodCountUp);
         itemCounts.Add(CatLeafCountUp);
+        cantTouchTag = false;
+        cantJump = false;
+        isHitted = false;
+        alphabetOn = new bool[5]{ false, false, false, false, false };
+        catFoodCount = 0;
+        catFoodsCount = 0;
+        canFoodCount = 0;
+        catLeafCount = 0;
+        tagNumber = 0;
         for (int i=0; i < playerPrefs.Length; i++)
         {
             players[i] = Instantiate(playerPrefs[i]);
@@ -107,6 +119,16 @@ public class CharacterManager : MonoBehaviour
 
         catLeafCanvas = Instantiate(catLeafCanvasPrefab);
         catLeafCanvas.gameObject.SetActive(false);
+    }
+    public void ResetAll()
+    {
+        cameramove.CameraReset();
+        Destroy(catLeafCanvas);
+        for (int i = 0; i < players.Length; i++)
+        {
+            Destroy(players[i]);
+        }
+        
     }
 
     public void GetCallback(CallBack scoreFunction, CallBack healthFunction, CallBack alphabetFunction,
@@ -255,7 +277,7 @@ public class CharacterManager : MonoBehaviour
     }
     public void PlayerDead()
     {
-        UIManager.uimanager.ShowCanvas(4);
+        UIManager.uimanager.ShowCanvas(5);
         cantJump = true;
         playerScript.Dead();
         MapManager.mapmanager.PlayerEnd();
@@ -283,7 +305,7 @@ public class CharacterManager : MonoBehaviour
 
     public void GameClear()
     {
-        UIManager.uimanager.ShowCanvas(3);
+        UIManager.uimanager.ShowCanvas(4);
         cantJump = true;
         MapManager.mapmanager.PlayerEnd();
         playerScript.GameClear();

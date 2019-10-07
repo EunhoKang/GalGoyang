@@ -65,15 +65,18 @@ public class GameOverCanvas : MonoBehaviour
     IEnumerator GoBackToMenuCoroutine()
     {
         SoundManager.soundmanager.UIClick();
-        SceneManager.UnloadSceneAsync("Game");
-        yield return null;
-        UIManager.uimanager.RemoveCanvas(2);
-        UIManager.uimanager.ShowCanvas(1);
-        UIManager.uimanager.RemoveCanvas(4);
+        CharacterManager.charmanager.ResetAll();
+        MapManager.mapmanager.ResetAll();
+        yield return new WaitForSeconds(0.5f);
+        UIManager.uimanager.RemoveCanvas(3);
+        UIManager.uimanager.ShowCanvas(2);
+        UIManager.uimanager.EndLoading();
+        UIManager.uimanager.RemoveCanvas(5);
     }
 
     public void GoBackToMenu()
     {
         StartCoroutine(GoBackToMenuCoroutine());
+        UIManager.uimanager.LoadingScreen();
     }
 }

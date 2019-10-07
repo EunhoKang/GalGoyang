@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasPrefabs:
+  - {fileID: 5564194209153006542, guid: fe102a1bee97c754990df583bfef7415, type: 3}
   - {fileID: 7804335933044876451, guid: a2d1ff5c2d7624846b83859787e6eb21, type: 3}
   - {fileID: 8409491168650959616, guid: 503c161d58bbada458f30fbe328bc2c2, type: 3}
   - {fileID: 566285878630466593, guid: 6197b71b388bae245b403f0c664a8ab1, type: 3}

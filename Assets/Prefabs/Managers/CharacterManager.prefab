@@ -62,6 +62,7 @@ MonoBehaviour:
   jumpPower: 0
   gravityScale: 0
   speedMultiplier: 1
+  playerHealth: 7
   catFoodScore: 100
   catFoodsScore: 200
   canFoodScore: 300
@@ -76,7 +77,7 @@ MonoBehaviour:
   idlePlayerSpeed: 5
   initialSpeedMultiplier: 1
   immuneTime: 1.8
-  playerHealth: 7
+  initialPlayerHealth: 7
   maxHealthCount: 7
   catLeafCanvasPrefab: {fileID: 851140081378614077, guid: 93c497f63e9c82c40acb27721736e5b7,
     type: 3}

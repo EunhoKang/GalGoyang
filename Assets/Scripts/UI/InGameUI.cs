@@ -18,7 +18,7 @@ public class InGameUI : MonoBehaviour
     public GameObject JumpButton;
     public GameObject ActionButton;
     public Image[] TagImages;
-    private int TaggedCount=0;
+    private int TaggedCount=30000;
     public Slider tagSlider;
     public RectTransform tagSliderPos;
     public GameObject pauseMenu;
@@ -38,6 +38,7 @@ public class InGameUI : MonoBehaviour
     private void OnEnable()
     {
         ResetTags();
+        TaggedCount = 30000;
         scoreText.text = "00000000";
         scoreStringBuilder= new StringBuilder("00000000");
 
@@ -50,15 +51,7 @@ public class InGameUI : MonoBehaviour
             BINKY_On[i].gameObject.SetActive(false);
             alphabetOn[i] = false;
         }
-        TagPos[0] = new Vector3(tagSlider.gameObject.transform.position.x + ovalScaleX * Mathf.Cos(Mathf.PI * 3 / 2), tagSlider.gameObject.transform.position.y + ovalScaleY * Mathf.Sin(Mathf.PI * 3 / 2), 0);
-        TagPos[1] = new Vector3(tagSlider.gameObject.transform.position.x + ovalScaleX * Mathf.Cos(Mathf.PI * 1 / 6), tagSlider.gameObject.transform.position.y + ovalScaleY * Mathf.Sin(Mathf.PI * 1 / 6), 0);
-        TagPos[2] = new Vector3(tagSlider.gameObject.transform.position.x + ovalScaleX * Mathf.Cos(Mathf.PI * 5 / 6), tagSlider.gameObject.transform.position.y + ovalScaleY * Mathf.Sin(Mathf.PI * 5 / 6), 0);
-        for (int i=0; i < TagImages.Length; i++)
-        {
-            TagImages[i].rectTransform.position = TagPos[i];
-            TagImages[i].rectTransform.localScale= Vector3.Lerp(Bscale, Oscale, (Mathf.Cos(Mathf.PI * 2 / 3 *i) + 1 ) / 2);
-            TagImages[i].color= Vector4.Lerp(Bcolor, Ocolor, (Mathf.Cos(Mathf.PI * 2 / 3 * i) + 1) / 2);
-        }
+        
         if(CharacterManager.charmanager!=null)
             CharacterManager.charmanager.GetCallback(ScoreUI, HealthUI,AlphabetUI,ReadyForAction,ReadyForJump);
     }
@@ -148,6 +141,7 @@ public class InGameUI : MonoBehaviour
     }
     IEnumerator SliderLeftMove()
     {
+        TaggedCount--;
         WaitForSeconds wfs = new WaitForSeconds(0.01f);
         Vector3 temp=new Vector3(0,0,0);
         for (float i = -1; i >= -20; i--)
@@ -173,11 +167,12 @@ public class InGameUI : MonoBehaviour
         TagImages[0] = TagImages[1];
         TagImages[1] = TagImages[2];
         TagImages[2] = temp2;
-        TaggedCount--;
+       
         SliderMove = false;
     }
     IEnumerator SliderRightMove()
     {
+        TaggedCount++;
         WaitForSeconds wfs = new WaitForSeconds(0.01f);
         Vector3 temp = new Vector3(0, 0, 0);
         for (float i = 1; i <= 20; i++)
@@ -203,7 +198,6 @@ public class InGameUI : MonoBehaviour
         TagImages[2] = TagImages[1];
         TagImages[1] = TagImages[0];
         TagImages[0] = temp2;
-        TaggedCount++;
         SliderMove = false;
     }
     private void Update()
@@ -236,21 +230,17 @@ public class InGameUI : MonoBehaviour
             TagImages[1] = TagImages[2];
             TagImages[2] = temp2;
         }
-        Vector3 temp = new Vector3(0, 0, 0);
-        temp.x = tagSliderPos.position.x + 50f * Mathf.Cos(Mathf.PI * - 0.5f);
-        temp.y = tagSliderPos.position.y + 20f * Mathf.Sin(Mathf.PI * - 0.5f);
-        TagImages[0].rectTransform.position = temp;
-        temp.x = tagSliderPos.position.x + 50f * Mathf.Cos(Mathf.PI * 1f / 6f);
-        temp.y = tagSliderPos.position.y + 20f * Mathf.Sin(Mathf.PI * 1f / 6f);
-        TagImages[1].rectTransform.position = temp;
-        temp.x = tagSliderPos.position.x + 50f * Mathf.Cos(Mathf.PI * 5f / 6f);
-        temp.y = tagSliderPos.position.y + 20f * Mathf.Sin(Mathf.PI * 5f / 6f);
-        TagImages[2].rectTransform.position = temp;
-        TagImages[0].rectTransform.localScale = Vector3.Lerp(Bscale, Oscale, -0.5f * Mathf.Sin(Mathf.PI * - 0.5f) + 0.5f);
-        TagImages[1].rectTransform.localScale = Vector3.Lerp(Bscale, Oscale, -0.5f * Mathf.Sin(Mathf.PI * 1f / 6f) + 0.5f);
-        TagImages[2].rectTransform.localScale = Vector3.Lerp(Bscale, Oscale, -0.5f * Mathf.Sin(Mathf.PI * 5f / 6f) + 0.5f);
-        TagImages[0].color = Vector4.Lerp(Bcolor, Ocolor, -0.5f * Mathf.Sin(Mathf.PI * - 0.5f) + 0.5f);
-        TagImages[1].color = Vector4.Lerp(Bcolor, Ocolor, -0.5f * Mathf.Sin(Mathf.PI * 1f / 6f) + 0.5f);
-        TagImages[2].color = Vector4.Lerp(Bcolor, Ocolor, -0.5f * Mathf.Sin(Mathf.PI * 5f / 6f) + 0.5f);
+        TagPos[0] = new Vector3(tagSlider.gameObject.transform.position.x + ovalScaleX * Mathf.Cos(Mathf.PI * 3 / 2), 
+            tagSlider.gameObject.transform.position.y + ovalScaleY * Mathf.Sin(Mathf.PI * 3 / 2), 0);
+        TagPos[1] = new Vector3(tagSlider.gameObject.transform.position.x + ovalScaleX * Mathf.Cos(Mathf.PI * 1 / 6), 
+            tagSlider.gameObject.transform.position.y + ovalScaleY * Mathf.Sin(Mathf.PI * 1 / 6), 0);
+        TagPos[2] = new Vector3(tagSlider.gameObject.transform.position.x + ovalScaleX * Mathf.Cos(Mathf.PI * 5 / 6), 
+            tagSlider.gameObject.transform.position.y + ovalScaleY * Mathf.Sin(Mathf.PI * 5 / 6), 0);
+        for (int i = 0; i < TagImages.Length; i++)
+        {
+            TagImages[i].rectTransform.position = TagPos[i];
+            TagImages[i].rectTransform.localScale = Vector3.Lerp(Bscale, Oscale, (Mathf.Cos(Mathf.PI * 2 / 3 * i) + 1) / 2);
+            TagImages[i].color = Vector4.Lerp(Bcolor, Ocolor, (Mathf.Cos(Mathf.PI * 2 / 3 * i) + 1) / 2);
+        }
     }
 }

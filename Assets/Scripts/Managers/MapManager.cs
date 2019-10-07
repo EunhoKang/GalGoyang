@@ -30,12 +30,13 @@ public class MapManager : MonoBehaviour
     [Header("Maps")]
     public List<GameObject> MapOrder;
     public List<int> SizeOrder;
-    private List<MapBlock> Maps;
-    public float MapPointerStart=-20;
     public int finishMap;
+    private List<MapBlock> Maps;
+    private float MapPointerStart;
     private List<GameObject> MapList;
     private Vector3 MapPointer;
-    private int mapindex = 1;
+    private int mapindex;
+    private Transform MapHolder;
     [Header("BackGround")]
     public List<GameObject> BackGroundPrefabs=new List<GameObject>();
     private List<GameObject> BackGrounds = new List<GameObject>();
@@ -45,8 +46,15 @@ public class MapManager : MonoBehaviour
     public AudioClip bgm;
     public AudioClip startsound;
 
+    bool isReset=false;
+
     public void Init()
     {
+        isReset = false;
+        mapindex = 1;
+        MapHolder = new GameObject("Holder").transform;
+        MapHolder.position = new Vector3(0, 0, 0);
+        MapPointerStart = SizeOrder[0]*-1;
         Maps = new List<MapBlock>();
         for(int i = 0; i < MapOrder.Count; i++)
         {
@@ -57,31 +65,43 @@ public class MapManager : MonoBehaviour
         }
         MapList=new List<GameObject>();
         MapPointer=new Vector3(MapPointerStart,0,0);
-
-        for(int i = 0; i < BackGroundPrefabs.Count;i++)
+        BackGrounds = new List<GameObject>();
+        for (int i = 0; i < BackGroundPrefabs.Count;i++)
         {
             BackGrounds.Add(Instantiate(BackGroundPrefabs[i]));
             BackGrounds[i].transform.position = new Vector3(BackGroundWidth * i, -0.6f, 0);
         }
-        GameStart();
-    }
-    public void GameStart(){
-        GameObject instance;
-        instance=Instantiate(Maps[0].map,MapPointer,Quaternion.identity);
-        MapPointer.x+=Maps[0].mapSize;
-        instance.SetActive(false);
-        for(int i=0; i<Maps.Count; i++){
-            instance =Instantiate(Maps[i].map,MapPointer,Quaternion.identity);
-            MapPointer.x+=Maps[i].mapSize;
-            instance.SetActive(false);
-            MapList.Add(instance);
+
+        GameObject instance2;
+        instance2 = Instantiate(Maps[0].map, MapPointer, Quaternion.identity);
+        instance2.transform.SetParent(MapHolder);
+        MapPointer.x += Maps[0].mapSize;
+        instance2.SetActive(false);
+        for (int i = 0; i < Maps.Count; i++)
+        {
+            instance2 = Instantiate(Maps[i].map, MapPointer, Quaternion.identity);
+            instance2.transform.SetParent(MapHolder);
+            MapPointer.x += Maps[i].mapSize;
+            instance2.SetActive(false);
+            MapList.Add(instance2);
         }
-        for(int i=0;i<4;i++){
+        for (int i = 0; i < 4; i++)
+        {
             MapList[i].SetActive(true);
         }
-        StartCoroutine("GamePlaying");
+        StartCoroutine(GamePlaying());
     }
 
+    public void ResetAll()
+    {
+        isReset = true;
+        StopCoroutine(GamePlaying());
+        Destroy(MapHolder.gameObject);
+        for (int i = 0; i < BackGroundPrefabs.Count; i++)
+        {
+            Destroy(BackGrounds[i]);
+        }
+    }
     IEnumerator GamePlaying(){
         SoundManager.soundmanager.BGMSet(bgm);
         SoundManager.soundmanager.SFXSet(startsound, 0);
@@ -90,7 +110,7 @@ public class MapManager : MonoBehaviour
         float BGPosCount=playerXPos;
         int BGChangeCount = 0;
         Vector3 BGPlus = new Vector3(BackGroundWidth * BackGrounds.Count, 0, 0);
-        while(mapindex<finishMap-1){
+        while(mapindex<finishMap-1 && CharacterManager.charmanager.player!=null){
             playerXPos= CharacterManager.charmanager.player.transform.position.x;
             if(playerXPos>CurrentMap+Maps[mapindex].mapSize){
                 CurrentMap += Maps[mapindex].mapSize;
@@ -105,7 +125,10 @@ public class MapManager : MonoBehaviour
             }
             yield return null;
         }
-        CharacterManager.charmanager.GameClear();
+        if (!isReset)
+        {
+            CharacterManager.charmanager.GameClear();
+        }
         SoundManager.soundmanager.BGMStop();
     }
 

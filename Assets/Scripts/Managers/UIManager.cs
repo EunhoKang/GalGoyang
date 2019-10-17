@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
         StartCoroutine(Init());
     }
 
@@ -39,11 +40,8 @@ public class UIManager : MonoBehaviour
             temp.SetActive(false);
             yield return null;
         }
-        ShowCanvas(1);
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
-        yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
+        ShowCanvas(1);
     }
 
     public void RemoveCanvas(int index)

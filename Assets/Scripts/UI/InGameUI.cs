@@ -29,8 +29,8 @@ public class InGameUI : MonoBehaviour
     private Vector3 Bscale = new Vector3(0.5f, 0.5f, 1f);
     private Vector4 Ocolor = new Vector4(1f, 1f, 1f, 1f);
     private Vector4 Bcolor = new Vector4(0.5f, 0.5f, 0.5f, 1f);
-    float ovalScaleX = Screen.width * 0.08f;
-    float ovalScaleY = Screen.height * 0.06f;
+    float ovalScaleX = Screen.width * 0.06f;
+    float ovalScaleY = Screen.height * 0.04f;
 
     public Image[] BINKY_On;
     private bool[] alphabetOn = { false, false, false, false, false };

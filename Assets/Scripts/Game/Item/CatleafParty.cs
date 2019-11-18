@@ -6,7 +6,10 @@ public class CatleafParty : Item
 {
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        CharacterManager.charmanager.CatLeafParty();
         base.OnTriggerEnter2D(other);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            CharacterManager.charmanager.CatLeafParty();
+        }
     }
 }

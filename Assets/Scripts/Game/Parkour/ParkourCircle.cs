@@ -33,6 +33,12 @@ public class ParkourCircle : MonoBehaviour
         randomPlace = new Vector3(0,0,0);
         mathtemp = Mathf.PI * 2;
     }
+    private void OnEnable()
+    {
+        CountReset();
+        noteLine.transform.position = transform.position;
+        noteLine.transform.position += Vector3.right * radius;
+    }
 
     public void PushButton()
     {
@@ -105,7 +111,6 @@ public class ParkourCircle : MonoBehaviour
             faceDefault.SetActive(false);
             faceFail.SetActive(true);
             SoundManager.soundmanager.SFXSet(fail, 4);
-            yield return new WaitForSeconds(0.8f);
             PassFail = false;
         }
         sendmsg = true;

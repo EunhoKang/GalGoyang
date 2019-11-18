@@ -45,7 +45,7 @@ public class Mumyeong : MonoBehaviour
 
     public void Parkour()
     {
-        StartCoroutine("StartParkour");
+        StartCoroutine(StartParkour());
     }
 
     IEnumerator StartParkour()

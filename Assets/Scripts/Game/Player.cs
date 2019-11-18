@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
         idle=0,
         air,
         end,
-        parkour
+        parkour,
+        hitted
     };
     public enum PlayerType
     {
@@ -121,6 +122,11 @@ public class Player : MonoBehaviour
             {
                 rb.AddForce(Vector2.up* CharacterManager.charmanager.speedMultiplier*10);
             }
+            if (rb.gravityScale != CharacterManager.charmanager.gravityScale)
+            {
+                Debug.Log("gravity error");
+                SpeedChange(CharacterManager.charmanager.initialSpeedMultiplier);
+            }
             cur= transform.position.y;
             yield return null;
         }
@@ -203,12 +209,16 @@ public class Player : MonoBehaviour
         Color c = sr.color;
         c.a = 1;
         sr.color = c;
+        playerstate = PlayerState.idle;
         animator.SetTrigger("playerTag");
     }
 
     public void Dead(){
         rb.velocity *= 0;
         rb.isKinematic = true;
+        Color c = sr.color;
+        c.a = 1;
+        sr.color = c;
         SoundManager.soundmanager.SFXSet(DeadSound, 0);
         StopAllCoroutines();
         if(curUdada!=null)
@@ -263,7 +273,14 @@ public class Player : MonoBehaviour
         rb.velocity *= 0;
         rb.isKinematic = true;
     }
-
+    public void isHitted()
+    {
+        if (!isUdada)
+        {
+            SpeedChange(CharacterManager.charmanager.initialSpeedMultiplier);
+            playerstate = PlayerState.idle;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         switch(other.gameObject.layer){
             case 8 :
@@ -283,6 +300,9 @@ public class Player : MonoBehaviour
                     CharacterManager.charmanager.HealthLoss();
                     if (CharacterManager.charmanager.playerHealth > 0)
                     {
+                        SpeedChange(CharacterManager.charmanager.immuneSpeedMultiplier);
+                        playerstate = PlayerState.hitted;
+                        Invoke("isHitted",CharacterManager.charmanager.immuneSlowTime);
                         StartCoroutine(Immune());
                     }
                 }
@@ -367,10 +387,11 @@ public class Player : MonoBehaviour
             yield return defaultAnim;
         }
         isUdada = false;
-        SpeedChangeUdada(CharacterManager.charmanager.initialSpeedMultiplier);
+        SpeedChange(CharacterManager.charmanager.initialSpeedMultiplier);
         effector.SetBool("Udada", false);
         CharacterManager.charmanager.isHitted = true;
         CharacterManager.charmanager.cantTouchTag = false;
+        playerstate = PlayerState.idle;
         yield return StartCoroutine(Immune());
     }
 
@@ -404,6 +425,7 @@ public class Player : MonoBehaviour
         }
         isMega = false;
         CharacterManager.charmanager.cantTouchTag = false;
+        playerstate = PlayerState.idle;
         yield return StartCoroutine(Immune());
     }
 
@@ -425,6 +447,7 @@ public class Player : MonoBehaviour
         rb.velocity = temp;
         CharacterManager.charmanager.isHitted = true;
         CharacterManager.charmanager.cantTouchTag = false;
+        playerstate = PlayerState.idle;
         yield return StartCoroutine(Immune());
     }
 }

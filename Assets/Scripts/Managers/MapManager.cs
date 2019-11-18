@@ -139,7 +139,10 @@ public class MapManager : MonoBehaviour
     }
 
     public void MapRefresh(int playerPosNum){
-        MapList[playerPosNum-2].SetActive(false);
+        if (playerPosNum - 3 >= 0)
+        {
+            MapList[playerPosNum - 3].SetActive(false);
+        }
         if (playerPosNum+2<MapList.Count) {
             MapList[playerPosNum + 2].SetActive(true);
         }
@@ -148,6 +151,7 @@ public class MapManager : MonoBehaviour
         for(int i=0;i<Maps.Count;i++){
             MapList[i].SetActive(false);
         }
+        MapList[playerPosNum - 2].SetActive(true);
         MapList[playerPosNum-1].SetActive(true);
         MapList[playerPosNum].SetActive(true);
         MapList[playerPosNum+1].SetActive(true);

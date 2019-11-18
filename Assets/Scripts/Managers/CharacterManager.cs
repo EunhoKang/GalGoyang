@@ -57,6 +57,8 @@ public class CharacterManager : MonoBehaviour
     public float idlePlayerSpeed;
     public float initialSpeedMultiplier;
     public float immuneTime;
+    public float immuneSpeedMultiplier;
+    public float immuneSlowTime;
     public int initialPlayerHealth;
     public int maxHealthCount;
 

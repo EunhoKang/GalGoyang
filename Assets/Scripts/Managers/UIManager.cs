@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
     }
+
     public List<GameObject> CanvasPrefabs;
     private List<GameObject> Canvases=new List<GameObject>();
     WaitForSeconds confirm = new WaitForSeconds(0.1f);
@@ -27,6 +28,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+        float height = Screen.height;
+        Screen.SetResolution((int)(height * 16 / 9), (int)height, false);
         StartCoroutine(Init());
     }
 

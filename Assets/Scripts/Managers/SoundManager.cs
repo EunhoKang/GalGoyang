@@ -35,18 +35,18 @@ public class SoundManager : MonoBehaviour
     public void SoundPause()
     {
         BGM.Pause();
-        for(int i = 0; i < SFX.Length; i++)
-        {
-            SFX[i].Pause();
-        }
+        //for(int i = 0; i < SFX.Length; i++)
+        //{
+        //    SFX[i].Pause();
+        //}
     }
     public void SoundResume()
     {
         BGM.Play();
-        for (int i = 0; i < SFX.Length; i++)
-        {
-            SFX[i].Play();
-        }
+        //for (int i = 0; i < SFX.Length; i++)
+        //{
+        //    SFX[i].Play();
+        //}
     }
     public void SFXSet(AudioClip a, int source)
     {

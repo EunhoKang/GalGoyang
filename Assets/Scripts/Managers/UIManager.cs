@@ -56,11 +56,10 @@ public class UIManager : MonoBehaviour
         Canvases[index].SetActive(true);
     }
 
-    IEnumerator RestartCoroutine()
+    IEnumerator RestartCoroutine()//
     {
         LoadingScreen();
-        RemoveCanvas(3);
-        RemoveCanvas(5);
+
         CharacterManager.charmanager.ResetAll();
         MapManager.mapmanager.ResetAll();
         yield return new WaitForSeconds(0.5f);
@@ -72,6 +71,11 @@ public class UIManager : MonoBehaviour
 
         CharacterManager.charmanager.Init();
         MapManager.mapmanager.Init();
+        for (int i = 1; i < Canvases.Count; i++)
+        {
+            if(i!=3)
+                RemoveCanvas(i);
+        }
         ShowCanvas(3);
         EndLoading();
     }

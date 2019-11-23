@@ -35,6 +35,8 @@ public class InGameUI : MonoBehaviour
     public Image[] BINKY_On;
     private bool[] alphabetOn = { false, false, false, false, false };
 
+    private bool isPaused = false;
+
     private void OnEnable()
     {
         ResetTags();
@@ -51,8 +53,9 @@ public class InGameUI : MonoBehaviour
             BINKY_On[i].gameObject.SetActive(false);
             alphabetOn[i] = false;
         }
-        
-        if(CharacterManager.charmanager!=null)
+        isPaused = false;
+        pauseMenu.SetActive(false);
+        if (CharacterManager.charmanager!=null)
             CharacterManager.charmanager.GetCallback(ScoreUI, HealthUI,AlphabetUI,ReadyForAction,ReadyForJump);
     }
 
@@ -107,11 +110,13 @@ public class InGameUI : MonoBehaviour
 
     public void Jump()
     {
-        CharacterManager.charmanager.PlayerJump();
+        if(!isPaused)
+            CharacterManager.charmanager.PlayerJump();
     }
     public void Parkour()
     {
-        CharacterManager.charmanager.PlayerParkour();
+        if (!isPaused)
+            CharacterManager.charmanager.PlayerParkour();
     }
 
     public void ReadyForAction()
@@ -203,7 +208,7 @@ public class InGameUI : MonoBehaviour
     private void Update()
     {
         float val = tagSlider.value;
-        if (val != 0 )
+        if (val != 0 && !isPaused)
         {
             tagSlider.value = 0;
             if (SliderMove || CharacterManager.charmanager.cantTouchTag || CharacterManager.charmanager.playerScript.playerstate != 0)
@@ -242,5 +247,55 @@ public class InGameUI : MonoBehaviour
             TagImages[i].rectTransform.localScale = Vector3.Lerp(Bscale, Oscale, (Mathf.Cos(Mathf.PI * 2 / 3 * i) + 1) / 2);
             TagImages[i].color = Vector4.Lerp(Bcolor, Ocolor, (Mathf.Cos(Mathf.PI * 2 / 3 * i) + 1) / 2);
         }
+    }
+
+    public void Pause()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 1;
+            isPaused = false;
+            pauseMenu.SetActive(false);
+            SoundManager.soundmanager.SoundResume();
+        }
+        else
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+            pauseMenu.SetActive(true);
+            SoundManager.soundmanager.SoundPause();
+        }
+    }
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SoundManager.soundmanager.UIClick();
+        UIManager.uimanager.GameRestart();
+        OnEnable();
+    }
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Pause();
+    }
+    IEnumerator GoBackToMenuCoroutine()
+    {
+        SoundManager.soundmanager.UIClick();
+        UIManager.uimanager.LoadingScreen();
+        CharacterManager.charmanager.ResetAll();
+        MapManager.mapmanager.ResetAll();
+        yield return new WaitForSeconds(0.5f);
+
+        UIManager.uimanager.ShowCanvas(2);
+        yield return null;
+        UIManager.uimanager.EndLoading();
+        UIManager.uimanager.RemoveCanvas(3);
+    }
+
+    public void GoBackToMenu()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(GoBackToMenuCoroutine());
+        
     }
 }

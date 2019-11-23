@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -87,7 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -157,9 +165,10 @@ Camera:
   m_ClearFlags: 2
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -271,31 +280,49 @@ PrefabInstance:
     - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
         type: 3}
       propertyPath: BackGroundPrefabs.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
         type: 3}
-      propertyPath: BackGroundWidth
-      value: 17.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
-        type: 3}
-      propertyPath: BackGroundPrefabs.Array.data[0]
+      propertyPath: BackGroundPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 585358921053245198, guid: 95b21a32a11b6974daa821621138d157,
+      objectReference: {fileID: 585358921053245198, guid: 4ec7d80bb41c87d49889fab27908efeb,
+        type: 3}
+    - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
+        type: 3}
+      propertyPath: BackGroundPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 585358921053245198, guid: ad00b1af9e3683e42ae4eef889e0465e,
+        type: 3}
+    - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
+        type: 3}
+      propertyPath: BackGroundPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 585358921053245198, guid: 444f9ee03a0621240a9b9735c9d1d461,
         type: 3}
     - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
         type: 3}
       propertyPath: BackGroundPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 585358921053245198, guid: 95b21a32a11b6974daa821621138d157,
+      objectReference: {fileID: 585358921053245198, guid: d0606a7235690a9449cfc219268eb960,
         type: 3}
     - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
         type: 3}
       propertyPath: BackGroundPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 585358921053245198, guid: 95b21a32a11b6974daa821621138d157,
+      objectReference: {fileID: 585358921053245198, guid: 73cdd5545f126294faf7118713be9768,
         type: 3}
+    - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
+        type: 3}
+      propertyPath: MapOrder.Array.data[0]
+      value: 
+      objectReference: {fileID: 6042206972930976123, guid: 47bb1f701272fa84abc658da4a23c510,
+        type: 3}
+    - target: {fileID: 5414868384776059584, guid: 0a3f7dcf1b0134747b87da53a2c8b85b,
+        type: 3}
+      propertyPath: BackGroundWidth
+      value: 23.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a3f7dcf1b0134747b87da53a2c8b85b, type: 3}
 --- !u!1001 &2519513920301762809

@@ -251,19 +251,22 @@ public class InGameUI : MonoBehaviour
 
     public void Pause()
     {
-        if (isPaused)
+        if (CharacterManager.charmanager != null && !CharacterManager.charmanager.isDead)
         {
-            Time.timeScale = 1;
-            isPaused = false;
-            pauseMenu.SetActive(false);
-            SoundManager.soundmanager.SoundResume();
-        }
-        else
-        {
-            Time.timeScale = 0;
-            isPaused = true;
-            pauseMenu.SetActive(true);
-            SoundManager.soundmanager.SoundPause();
+            if (isPaused)
+            {
+                Time.timeScale = 1;
+                isPaused = false;
+                pauseMenu.SetActive(false);
+                SoundManager.soundmanager.SoundResume();
+            }
+            else
+            {
+                Time.timeScale = 0;
+                isPaused = true;
+                pauseMenu.SetActive(true);
+                SoundManager.soundmanager.SoundPause();
+            }
         }
     }
     public void Restart()

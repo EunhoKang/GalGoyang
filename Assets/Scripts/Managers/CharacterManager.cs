@@ -64,6 +64,7 @@ public class CharacterManager : MonoBehaviour
 
     public CatleafCanvas catLeafCanvasPrefab;
     private CatleafCanvas catLeafCanvas;
+    [HideInInspector] public bool isDead;
 
     [HideInInspector] public bool cantTouchTag=false;
     private bool cantJump = false;
@@ -121,6 +122,7 @@ public class CharacterManager : MonoBehaviour
 
         catLeafCanvas = Instantiate(catLeafCanvasPrefab);
         catLeafCanvas.gameObject.SetActive(false);
+        isDead = false;
     }
     public void ResetAll()
     {
@@ -282,6 +284,7 @@ public class CharacterManager : MonoBehaviour
         UIManager.uimanager.ShowCanvas(5);
         cantJump = true;
         playerScript.Dead();
+        isDead = true;
         MapManager.mapmanager.PlayerEnd();
     }
 

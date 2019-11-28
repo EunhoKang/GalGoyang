@@ -13,6 +13,7 @@ public class DemoButton : MonoBehaviour
     IEnumerator ChangeScene()
     {
         SoundManager.soundmanager.UIClick();
+        UIManager.uimanager.MapNameChange("stage1");
         yield return new WaitForSeconds(1f);
         //SceneManager.UnloadSceneAsync("Game");
         //yield return new WaitForSeconds(1f);
@@ -24,6 +25,21 @@ public class DemoButton : MonoBehaviour
         MapManager.mapmanager.Init();
         yield return null;
         UIManager.uimanager.ShowCanvas(3);
+        UIManager.uimanager.RemoveCanvas(2);
+        UIManager.uimanager.EndLoading();
+    }
+
+    public void GoScript()
+    {
+        UIManager.uimanager.LoadingScreen();
+        StartCoroutine(ScriptScene());
+    }
+    IEnumerator ScriptScene()
+    {
+        SoundManager.soundmanager.UIClick();
+        UIManager.uimanager.ScriptNameChange("prologue");
+        yield return new WaitForSeconds(0.4f);
+        UIManager.uimanager.ShowCanvas(6);
         UIManager.uimanager.RemoveCanvas(2);
         UIManager.uimanager.EndLoading();
     }

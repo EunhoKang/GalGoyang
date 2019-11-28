@@ -222,7 +222,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -405,5 +405,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
+        type: 3}
+      propertyPath: CanvasPrefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
+        type: 3}
+      propertyPath: CanvasPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 7556454032312986176, guid: 6a1f03b442e6c6c46aec043cd1e70616,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a6828efca14a8f40845faa581135e11, type: 3}

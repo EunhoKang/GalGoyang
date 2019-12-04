@@ -28,8 +28,8 @@ public class MapManager : MonoBehaviour
     public int StageNum;
 
     [Header("Maps")]
-    public List<GameObject> MapOrder;
-    public List<int> SizeOrder;
+    public List<GameObject> MapOrder; //target
+    public List<int> SizeOrder; //target
     public int finishMap;
     private List<MapBlock> Maps;
     private float MapPointerStart;
@@ -38,12 +38,12 @@ public class MapManager : MonoBehaviour
     private int mapindex;
     private Transform MapHolder;
     [Header("BackGround")]
-    public List<GameObject> BackGroundPrefabs=new List<GameObject>();
+    public List<GameObject> BackGroundPrefabs=new List<GameObject>(); //target
     private List<GameObject> BackGrounds = new List<GameObject>();
-    public float BackGroundWidth;
+    public float BackGroundWidth; //target
 
     [Header("Sound")]
-    public AudioClip bgm;
+    public AudioClip bgm; //target
     public AudioClip startsound;
 
     bool isReset=false;

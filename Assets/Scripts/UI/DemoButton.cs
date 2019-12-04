@@ -13,7 +13,7 @@ public class DemoButton : MonoBehaviour
     IEnumerator ChangeScene()
     {
         SoundManager.soundmanager.UIClick();
-        UIManager.uimanager.MapNameChange("stage1");
+        UIManager.uimanager.mapName = "stage1";
         yield return new WaitForSeconds(1f);
         //SceneManager.UnloadSceneAsync("Game");
         //yield return new WaitForSeconds(1f);
@@ -29,17 +29,20 @@ public class DemoButton : MonoBehaviour
         UIManager.uimanager.EndLoading();
     }
 
-    public void GoScript()
+    public void ScriptChange()
     {
         UIManager.uimanager.LoadingScreen();
-        StartCoroutine(ScriptScene());
+        StartCoroutine(ScriptMode());
     }
-    IEnumerator ScriptScene()
+
+    IEnumerator ScriptMode()
     {
         SoundManager.soundmanager.UIClick();
-        UIManager.uimanager.ScriptNameChange("prologue");
-        yield return new WaitForSeconds(0.4f);
-        UIManager.uimanager.ShowCanvas(6);
+        yield return new WaitForSeconds(0.5f);
+        yield return null;
+        UIManager.uimanager.scriptName = "prologue";
+        UIManager.uimanager.catName = "lucy";
+        UIManager.uimanager.ShowCanvas(13);
         UIManager.uimanager.RemoveCanvas(2);
         UIManager.uimanager.EndLoading();
     }

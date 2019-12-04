@@ -24,16 +24,16 @@ public class UIManager : MonoBehaviour
     public List<GameObject> CanvasPrefabs;
     private List<GameObject> Canvases=new List<GameObject>();
     WaitForSeconds confirm = new WaitForSeconds(0.1f);
+
     public string scriptName;
     public string mapName;
+    public string catName;
 
     private void Start()
     {
         SceneManager.LoadScene("Game", LoadSceneMode.Additive);
         float height = Screen.height;
         Screen.SetResolution((int)(height * 16 / 9), (int)height, false);
-        scriptName = "";
-        mapName = "";
         StartCoroutine(Init());
     }
 
@@ -63,17 +63,19 @@ public class UIManager : MonoBehaviour
     IEnumerator RestartCoroutine()
     {
         LoadingScreen();
-
+        RemoveCanvas(3);
+        RemoveCanvas(5);
         CharacterManager.charmanager.ResetAll();
         MapManager.mapmanager.ResetAll();
         yield return new WaitForSeconds(0.5f);
+        //SceneManager.UnloadSceneAsync("Game");
+        //yield return new WaitForSeconds(0.5f);
+        //SceneManager.LoadSceneAsync("Game", LoadSceneMode.Additive);
+        //yield return new WaitForSeconds(1f);
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
+
         CharacterManager.charmanager.Init();
         MapManager.mapmanager.Init();
-        for (int i = 1; i < Canvases.Count; i++)
-        {
-            if(i!=3)
-                RemoveCanvas(i);
-        }
         ShowCanvas(3);
         EndLoading();
     }
@@ -90,12 +92,7 @@ public class UIManager : MonoBehaviour
     {
         RemoveCanvas(0);
     }
-    public void MapNameChange(string name)
-    {
-        mapName = name;
-    }
-    public void ScriptNameChange(string name)
-    {
-        scriptName = name;
+    public void GameIntro() {
+        ShowCanvas(6);
     }
 }

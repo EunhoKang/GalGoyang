@@ -24,26 +24,21 @@ public class MapManager : MonoBehaviour
         }
         //DontDestroyOnLoad(this);
     }
-    
-    public int StageNum;
 
-    [Header("Maps")]
-    public List<GameObject> MapOrder; //target
-    public List<int> SizeOrder; //target
-    public int finishMap;
+    [HideInInspector] public List<GameObject> MapOrder;
+    [HideInInspector] public List<int> SizeOrder;
+    [HideInInspector] public int finishMap;
     private List<MapBlock> Maps;
     private float MapPointerStart;
     private List<GameObject> MapList;
     private Vector3 MapPointer;
     private int mapindex;
     private Transform MapHolder;
-    [Header("BackGround")]
-    public List<GameObject> BackGroundPrefabs=new List<GameObject>(); //target
+    [HideInInspector] public List<GameObject> BackGroundPrefabs=new List<GameObject>();
     private List<GameObject> BackGrounds = new List<GameObject>();
-    public float BackGroundWidth; //target
+    [HideInInspector] public float BackGroundWidth; 
 
-    [Header("Sound")]
-    public AudioClip bgm; //target
+    [HideInInspector] public AudioClip bgm;
     public AudioClip startsound;
 
     bool isReset=false;
@@ -54,8 +49,19 @@ public class MapManager : MonoBehaviour
         mapindex = 1;
         MapHolder = new GameObject("Holder").transform;
         MapHolder.position = new Vector3(0, 0, 0);
+        //
+        GameObject mapfile = Resources.Load(UIManager.uimanager.mapName) as GameObject;
+        MapFile temp = mapfile.GetComponent<MapFile>();
+        MapOrder = temp.MapOrder;
+        SizeOrder = temp.SizeOrder;
+        finishMap = temp.finishMap;
+        BackGroundPrefabs = temp.BackGroundPrefabs;
+        BackGroundWidth = temp.BackGroundWidth;
+        bgm = temp.bgm;
+        //
         MapPointerStart = SizeOrder[0]*-1;
         Maps = new List<MapBlock>();
+
         for(int i = 0; i < MapOrder.Count; i++)
         {
             MapBlock instance = new MapBlock();

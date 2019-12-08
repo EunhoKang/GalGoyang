@@ -78,11 +78,12 @@ MonoBehaviour:
   initialSpeedMultiplier: 1
   immuneTime: 1.2
   immuneSpeedMultiplier: 0.4
-  immuneSlowTime: 0.5
+  immuneSlowTime: 0.2
   initialPlayerHealth: 7
   maxHealthCount: 7
   catLeafCanvasPrefab: {fileID: 851140081378614077, guid: 93c497f63e9c82c40acb27721736e5b7,
     type: 3}
+  isDead: 0
   cantTouchTag: 0
   isHitted: 0
   tagSound: {fileID: 8300000, guid: 9d693d5d3d38a1740afad3eb4d5d58d9, type: 3}

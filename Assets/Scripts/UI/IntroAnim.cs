@@ -7,10 +7,26 @@ using UnityEngine.SceneManagement;
 public class IntroAnim : MonoBehaviour
 {
     public Image intro;
+    public Text version;
+    public Text copyright;
+    public Text touchInfo;
+    bool gotonext;
+    WaitForSeconds wfs;
+    WaitForSeconds wfs2;
+
+    private void Awake()
+    {
+        wfs = new WaitForSeconds(0.05f);
+        wfs2 = new WaitForSeconds(0.8f);
+    }
 
     private void OnEnable()
     {
         StartCoroutine(StartEffect());
+        gotonext = false;
+        version.gameObject.SetActive(false);
+        copyright.gameObject.SetActive(false);
+        touchInfo.gameObject.SetActive(false);
     }
     private void OnDisable()
     {
@@ -22,7 +38,7 @@ public class IntroAnim : MonoBehaviour
 
     IEnumerator StartEffect()
     {
-        WaitForSeconds wfs = new WaitForSeconds(0.05f);
+        
         Color c = intro.color;
         c.a = 0;
         for (float i=0; i<=1.1f;i+=0.05f)
@@ -31,12 +47,37 @@ public class IntroAnim : MonoBehaviour
             intro.color = c;
             yield return wfs;
         }
-        Invoke("Change", 1f);
+        StartCoroutine(Change());
     }
 
-    void Change()
+    IEnumerator Change()
     {
+        yield return wfs2;
+        version.gameObject.SetActive(true);
+        copyright.gameObject.SetActive(true);
+        touchInfo.gameObject.SetActive(true);
+        Color c = touchInfo.color;
+        c.a = 0;
+        int cnt = 0;
+        while (!gotonext)
+        {
+            if (cnt % 2 == 1)
+            {
+                c.a = 1;
+            }
+            else
+            {
+                c.a = 0;
+            }
+            touchInfo.color = c;
+            cnt++;
+            yield return wfs2;
+        }
         UIManager.uimanager.RemoveCanvas(1);
         UIManager.uimanager.ShowCanvas(2);
+    }
+    public void GotoNext()
+    {
+        gotonext = true;
     }
 }

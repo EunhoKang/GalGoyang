@@ -405,46 +405,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
-        type: 3}
-      propertyPath: CanvasPrefabs.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
-        type: 3}
-      propertyPath: CanvasPrefabs.Array.data[8]
-      value: 
-      objectReference: {fileID: 364794770784891377, guid: 170cf6d1280ef1f4c8148586e19d9a5a,
-        type: 3}
-    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
-        type: 3}
-      propertyPath: CanvasPrefabs.Array.data[9]
-      value: 
-      objectReference: {fileID: 7017065739616759539, guid: 2b7b370a954b0724f8b45963f8b324dc,
-        type: 3}
-    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
-        type: 3}
-      propertyPath: CanvasPrefabs.Array.data[10]
-      value: 
-      objectReference: {fileID: 3178333102797447372, guid: f7b0bde3c8fd49745a3acad3e99f4192,
-        type: 3}
-    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
-        type: 3}
-      propertyPath: CanvasPrefabs.Array.data[11]
-      value: 
-      objectReference: {fileID: 8567661745201490616, guid: ff032c498b823bb4c9895e894ec0fc7d,
-        type: 3}
-    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
-        type: 3}
-      propertyPath: CanvasPrefabs.Array.data[12]
-      value: 
-      objectReference: {fileID: 8610474432838573862, guid: 7a620ab0e10a841488bb121b4626d105,
-        type: 3}
-    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
-        type: 3}
-      propertyPath: CanvasPrefabs.Array.data[13]
-      value: 
-      objectReference: {fileID: 7556454032312986176, guid: 6a1f03b442e6c6c46aec043cd1e70616,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a6828efca14a8f40845faa581135e11, type: 3}

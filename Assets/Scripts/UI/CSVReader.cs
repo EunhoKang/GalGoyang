@@ -55,11 +55,22 @@ public class CSVReader : MonoBehaviour
     public List<List<string>> Read(string file)
     {
         List<List<string>> list = new List<List<string>>();
+        
+        GameObject scriptFile = Resources.Load(UIManager.uimanager.scriptName) as GameObject;
+        ScriptFile temp = scriptFile.GetComponent<ScriptFile>();
+        
         for(int i = 0; i < 4; i++)
         {
             list.Add(new List<string>());
         }
-        TextAsset data = Resources.Load(file) as TextAsset;
+        
+        TextAsset data = temp.script;
+        for(int i = 0; i < temp.BGs.Count; i++)
+        {
+            BGs.Add(temp.BGs[i].name, temp.BGs[i]);
+        }
+        //
+
         var lines = Regex.Split(data.text, LINE_SPLIT_RE);
         if (lines.Length <= 1) return list;
 
@@ -96,11 +107,7 @@ public class CSVReader : MonoBehaviour
             }
             list[2].Add(values[3]);
             list[3].Add(values[4]);
-            if (values[4] != "-")
-            {
-                Sprite temp = Resources.Load<Sprite>(UIManager.uimanager.scriptName + "/" + values[4]);
-                BGs.Add(temp.name, temp);
-            }
+
             Debug.Log(list[0][list[0].Count - 1]+"||"+ list[1][list[1].Count - 1]+"||"+ list[2][list[2].Count - 1] + "||"+ list[3][list[3].Count - 1]);
         }
         return list;

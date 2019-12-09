@@ -289,7 +289,7 @@ public class InGameUI : MonoBehaviour
         MapManager.mapmanager.ResetAll();
         yield return new WaitForSeconds(0.5f);
 
-        UIManager.uimanager.ShowCanvas(2);
+        UIManager.uimanager.ShowCanvas(7);
         yield return null;
         UIManager.uimanager.EndLoading();
         UIManager.uimanager.RemoveCanvas(3);

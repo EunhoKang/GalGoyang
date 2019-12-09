@@ -25,9 +25,9 @@ public class UIManager : MonoBehaviour
     private List<GameObject> Canvases=new List<GameObject>();
     WaitForSeconds confirm = new WaitForSeconds(0.1f);
 
-    public string scriptName;
-    public string mapName;
-    public string catName;
+    [HideInInspector] public string scriptName;
+    [HideInInspector] public string mapName;
+    [HideInInspector] public string catName;
 
     private void Start()
     {
@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
         float height = Screen.height;
         Screen.SetResolution((int)(height * 16 / 9), (int)height, false);
         StartCoroutine(Init());
+        catName = "lucy";
     }
 
     IEnumerator Init()
@@ -48,7 +49,7 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
-        ShowCanvas(1);
+        ShowCanvas(14);
     }
 
     public void RemoveCanvas(int index)
@@ -92,7 +93,9 @@ public class UIManager : MonoBehaviour
     {
         RemoveCanvas(0);
     }
+    /*
     public void GameIntro() {
         ShowCanvas(6);
     }
+    */
 }

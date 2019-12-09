@@ -50,7 +50,7 @@ public class MapManager : MonoBehaviour
         MapHolder = new GameObject("Holder").transform;
         MapHolder.position = new Vector3(0, 0, 0);
         //
-        GameObject mapfile = Resources.Load(UIManager.uimanager.mapName) as GameObject;
+        GameObject mapfile = Resources.Load("map/"+UIManager.uimanager.mapName+"_"+UIManager.uimanager.catName) as GameObject;
         MapFile temp = mapfile.GetComponent<MapFile>();
         MapOrder = temp.MapOrder;
         SizeOrder = temp.SizeOrder;

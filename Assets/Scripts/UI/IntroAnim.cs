@@ -73,8 +73,9 @@ public class IntroAnim : MonoBehaviour
             cnt++;
             yield return wfs2;
         }
+        SoundManager.soundmanager.UIClick();
         UIManager.uimanager.RemoveCanvas(1);
-        UIManager.uimanager.ShowCanvas(2);
+        UIManager.uimanager.ShowCanvas(7);
     }
     public void GotoNext()
     {

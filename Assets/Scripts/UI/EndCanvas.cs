@@ -110,7 +110,7 @@ public class EndCanvas : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         
         UIManager.uimanager.RemoveCanvas(3);
-        UIManager.uimanager.ShowCanvas(2);
+        UIManager.uimanager.ShowCanvas(7);
         yield return null;
         UIManager.uimanager.EndLoading();
         UIManager.uimanager.RemoveCanvas(4);

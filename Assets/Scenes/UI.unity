@@ -405,5 +405,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
+        type: 3}
+      propertyPath: CanvasPrefabs.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
+        type: 3}
+      propertyPath: CanvasPrefabs.Array.data[14]
+      value: 
+      objectReference: {fileID: 7804335933044876451, guid: 0c5ae477751d8d646831c87b3ec57819,
+        type: 3}
+    - target: {fileID: 947361572894521482, guid: 0a6828efca14a8f40845faa581135e11,
+        type: 3}
+      propertyPath: CanvasPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 8993344997068572209, guid: e1403fa19a87c4b48b962c43bba4ac45,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a6828efca14a8f40845faa581135e11, type: 3}

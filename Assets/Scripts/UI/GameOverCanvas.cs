@@ -69,7 +69,7 @@ public class GameOverCanvas : MonoBehaviour
         MapManager.mapmanager.ResetAll();
         yield return new WaitForSeconds(0.5f);
         UIManager.uimanager.RemoveCanvas(3);
-        UIManager.uimanager.ShowCanvas(2);
+        UIManager.uimanager.ShowCanvas(7);
         UIManager.uimanager.EndLoading();
         UIManager.uimanager.RemoveCanvas(5);
     }

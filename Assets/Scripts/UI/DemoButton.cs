@@ -15,12 +15,6 @@ public class DemoButton : MonoBehaviour
         SoundManager.soundmanager.UIClick();
         UIManager.uimanager.mapName = "stage1";
         yield return new WaitForSeconds(1f);
-        //SceneManager.UnloadSceneAsync("Game");
-        //yield return new WaitForSeconds(1f);
-        //SceneManager.LoadSceneAsync("Game", LoadSceneMode.Additive);
-        //yield return new WaitForSeconds(1f);
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
-        //yield return new WaitForSeconds(0.5f);
         CharacterManager.charmanager.Init();
         MapManager.mapmanager.Init();
         yield return null;

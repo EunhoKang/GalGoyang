@@ -39,11 +39,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6839414591582557918}
     m_Modifications:
-    - target: {fileID: 8106295074216991974, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
+    - target: {fileID: 81347744684339181, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
-      propertyPath: m_Name
-      value: "\uACE0\uC591\uC774 \uBC15\uC2A4"
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.177
       objectReference: {fileID: 0}
+    - target: {fileID: 81347744684339181, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412074267789439638, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0477eabfcf0205f44959f5b8f547d84d,
+        type: 3}
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,22 +73,22 @@ PrefabInstance:
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
@@ -87,7 +98,7 @@ PrefabInstance:
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6279166557300762545, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
         type: 3}
@@ -109,6 +120,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8106295074216991974, guid: 94c09a09f6dd4cb4687f9571f2e88e36,
+        type: 3}
+      propertyPath: m_Name
+      value: "\uACE0\uC591\uC774 \uBC15\uC2A4"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c09a09f6dd4cb4687f9571f2e88e36, type: 3}
 --- !u!4 &4650389710940078686 stripped
@@ -124,10 +140,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6839414591582557918}
     m_Modifications:
-    - target: {fileID: 4135936331197727430, guid: 64d692b53ad43bf4998e5aa3c2c895ab,
+    - target: {fileID: 579008414979183776, guid: 64d692b53ad43bf4998e5aa3c2c895ab,
         type: 3}
-      propertyPath: m_Name
-      value: "\uBC15\uC2A4"
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d2220335d4824714c90601582a5642ae,
+        type: 3}
+    - target: {fileID: 1322939109357857589, guid: 64d692b53ad43bf4998e5aa3c2c895ab,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322939109357857589, guid: 64d692b53ad43bf4998e5aa3c2c895ab,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.158
       objectReference: {fileID: 0}
     - target: {fileID: 3186817475909695092, guid: 64d692b53ad43bf4998e5aa3c2c895ab,
         type: 3}
@@ -193,6 +220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135936331197727430, guid: 64d692b53ad43bf4998e5aa3c2c895ab,
+        type: 3}
+      propertyPath: m_Name
+      value: "\uBC15\uC2A4"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d692b53ad43bf4998e5aa3c2c895ab, type: 3}

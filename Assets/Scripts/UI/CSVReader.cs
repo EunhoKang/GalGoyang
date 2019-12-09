@@ -41,7 +41,7 @@ public class CSVReader : MonoBehaviour
     {
         index = 0;
         BGs = new Dictionary<string, Sprite>();
-        string scriptPath = UIManager.uimanager.scriptName + "/script_"+UIManager.uimanager.catName;
+        string scriptPath = "script/"+UIManager.uimanager.scriptName+"_"+UIManager.uimanager.catName;
         if (UIManager.uimanager.scriptName == "" || UIManager.uimanager.catName == "")
         {
             return;
@@ -56,7 +56,7 @@ public class CSVReader : MonoBehaviour
     {
         List<List<string>> list = new List<List<string>>();
         
-        GameObject scriptFile = Resources.Load(UIManager.uimanager.scriptName) as GameObject;
+        GameObject scriptFile = Resources.Load(file) as GameObject;
         ScriptFile temp = scriptFile.GetComponent<ScriptFile>();
         
         for(int i = 0; i < 4; i++)
@@ -155,7 +155,7 @@ public class CSVReader : MonoBehaviour
     {
         SoundManager.soundmanager.UIClick();
         yield return new WaitForSeconds(0.4f);
-        UIManager.uimanager.ShowCanvas(2);
+        UIManager.uimanager.ShowCanvas(11);
         UIManager.uimanager.RemoveCanvas(13);
         UIManager.uimanager.EndLoading();
     }
